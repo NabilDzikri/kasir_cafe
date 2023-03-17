@@ -37,4 +37,26 @@ class TransaksiController extends Controller
             $detailtransaksi->save();
         }
     }
+
+    public function getAllMenu()
+    {
+        // Retrieve AllMeja from your database
+        $AllTransaksi = Transaksi::all();
+
+        // Return the users as a JSON response
+        return response()->json($AllTransaksi);
+    }
+
+    public function getTransaksi($id)
+    {
+        // Retrieve a specific user from your database
+        $transaksi = Transaksi::find($id);
+
+        if (!$transaksi) {
+            return response()->json(['error' => 'Ganemu Bro'], 404);
+        }
+
+        // Return the user as a JSON response
+        return response()->json($transaksi);
+    }
 }
